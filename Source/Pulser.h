@@ -109,7 +109,6 @@ private:
    IntSlider* mResetLengthSlider{ nullptr };
    int mCustomDivisor{ 8 };
    IntSlider* mCustomDivisorSlider{ nullptr };
-   ClickButton* mRestartFreeTimeButton{ nullptr };
 
    TransportListenerInfo* mTransportListenerInfo{ nullptr };
 };
