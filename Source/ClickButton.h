@@ -25,6 +25,7 @@
 
 #pragma once
 
+#include "IPulseReceiver.h"
 #include "IUIControl.h"
 
 class ClickButton;
@@ -53,7 +54,7 @@ enum class ButtonDisplayStyle
    kHamburger
 };
 
-class ClickButton : public IUIControl
+class ClickButton : public IUIControl, public IPulseReceiver
 {
 public:
    ClickButton(IButtonListener* owner, const char* label, int x, int y, ButtonDisplayStyle displayStyle = ButtonDisplayStyle::kText);
@@ -88,6 +89,11 @@ public:
    void LoadState(FileStreamIn& in, bool shouldSetValue) override {}
    bool IsSliderControl() override { return false; }
    bool IsButtonControl() override { return true; }
+
+   bool CanBeTargetedBy(PatchCableSource* source) const override;
+
+   //IPulseReceiver
+   void OnPulse(double time, float velocity, int flags) override;
 
 protected:
    ~ClickButton(); //protected so that it can't be created on the stack
