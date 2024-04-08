@@ -243,8 +243,6 @@ target_sources(BespokeSynth PRIVATE
     KeyboardDisplay.h
     Kicker.cpp
     Kicker.h
-    LabelDisplay.cpp
-    LabelDisplay.h
     LFO.cpp
     LFO.h
     LFOController.cpp
@@ -703,8 +701,6 @@ target_sources(BespokeSynth PRIVATE
     Vocoder.h
     VocoderCarrierInput.cpp
     VocoderCarrierInput.h
-    VoiceSetter.cpp
-    VoiceSetter.h
     VolcaBeatsControl.cpp
     VolcaBeatsControl.h
     WaveformViewer.cpp

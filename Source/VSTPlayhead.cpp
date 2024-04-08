@@ -33,16 +33,8 @@ juce::Optional<juce::AudioPlayHead::PositionInfo> VSTPlayhead::getPosition() con
    juce::AudioPlayHead::LoopPoints loopPoint;
    timeSignature.numerator = TheTransport->GetTimeSigTop();
    timeSignature.denominator = TheTransport->GetTimeSigBottom();
-
-   juce::Optional<juce::AudioPlayHead::TimeSignature> posTM = pos.getTimeSignature();
-
    loopPoint.ppqStart = 0;
-   loopPoint.ppqEnd = 480;
-
-   if (posTM)
-   {
-      loopPoint.ppqEnd *= posTM->denominator;
-   }
+   loopPoint.ppqEnd = 480 * pos.getTimeSignature()->denominator;
 
    pos.setBpm(TheTransport->GetTempo());
    pos.setTimeSignature(timeSignature);

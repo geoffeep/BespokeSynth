@@ -599,17 +599,9 @@ void MidiController::MidiReceived(MidiMessageType messageType, int control, floa
             if (value > 0 || mUseNegativeEdge)
             {
                if (connection->mIncrementAmount != 0)
-               {
-                  const float midpoint = 64.0f / 127.0f;
-                  if (value > midpoint)
-                     uicontrol->Increment(connection->mIncrementAmount);
-                  else
-                     uicontrol->Increment(-connection->mIncrementAmount);
-               }
+                  uicontrol->Increment(connection->mIncrementAmount);
                else
-               {
                   uicontrol->SetValue(connection->mValue, NextBufferTime(false), K(forceUpdate));
-               }
                uicontrol->StartBeacon();
             }
          }

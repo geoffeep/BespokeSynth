@@ -105,7 +105,6 @@ public:
    void CreateUIControls() override;
 
    void Init() override;
-   int GetNumColumns() const { return (int)mBeatColumns.size(); }
 
    //IAudioSource
    void Process(double time) override;
@@ -133,7 +132,7 @@ public:
    void SetUpFromSaveData() override;
    void SaveState(FileStreamOut& out) override;
    void LoadState(FileStreamIn& in, int rev) override;
-   int GetModuleSaveStateRev() const override { return 2; }
+   int GetModuleSaveStateRev() const override { return 1; }
 
    bool IsEnabled() const override { return mEnabled; }
 
@@ -143,7 +142,7 @@ private:
    void GetModuleDimensions(float& width, float& height) override;
 
    ChannelBuffer mWriteBuffer;
-   std::vector<BeatColumn*> mBeatColumns;
+   std::array<BeatColumn*, 4> mBeatColumns;
    int mHighlightColumn{ -1 };
 };
 
